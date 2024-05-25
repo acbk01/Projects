@@ -34,7 +34,7 @@ class CrossandCircle(QMainWindow):
         
         self.StartBtn = QPushButton("Start", self)
         self.StartBtn.setGeometry(0, 0, 600, 300)
-        self.UstawieniaBtn = QPushButton("Ustawienia", self)
+        self.UstawieniaBtn = QPushButton("Settings", self)
         self.UstawieniaBtn.setGeometry(0, 300, 600, 300)
                 
         self.StartBtn.clicked.connect(self.game)
@@ -62,12 +62,12 @@ class Settings(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle("Ustawienia")
+        self.setWindowTitle("Settings")
         self.resize(600, 600)
         
-        self.etykieta1 = QLabel("Nazwa gracza 1:", self)
+        self.etykieta1 = QLabel("Player 1:", self)
         self.etykieta1.move(250, 150)
-        self.etykieta2 = QLabel("Nazwa gracza 2:", self)
+        self.etykieta2 = QLabel("Player 2:", self)
         self.etykieta2.move(250, 330)
         
         global Name1
@@ -78,7 +78,7 @@ class Settings(QMainWindow):
         Name2 = QLineEdit(self)
         Name2.move(245, 360)
         
-        self.Starter = QLabel("Rozpoczyna gracz:", self)
+        self.Starter = QLabel("Starting player:", self)
         self.Starter.move(250, 420)
         
         global Player1
@@ -93,7 +93,7 @@ class Settings(QMainWindow):
         Player2.resize(20, 20)
         Player2.move(310, 450)
         
-        self.ZapiszBtn = QPushButton("Zapisz i rozpocznij rozgrywkę", self)
+        self.ZapiszBtn = QPushButton("Save and start the game", self)
         self.ZapiszBtn.move(170, 500)
         self.ZapiszBtn.resize(250, 50)
         self.ZapiszBtn.clicked.connect(self.game)
@@ -118,9 +118,9 @@ class Draw(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle("Remis")
+        self.setWindowTitle("Tie")
         self.resize(200, 50)       
-        self.draw = QLabel("Gracze zremisowali!", self)
+        self.draw = QLabel("Players tied!", self)
         self.draw.move(50, 10)
         self.draw.resize(100, 30)
         
@@ -128,16 +128,16 @@ class WinnerX(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle("Zwycięzca")
+        self.setWindowTitle("Winner")
         self.resize(200, 50)    
         
         if Name1.text() != Name2.text():
-            self.XWon = QLabel("Gracz " + Name1.text() + " wygrał!", self)
+            self.XWon = QLabel("Player " + Name1.text() + " won!", self)
             self.XWon.move(50, 10)
             self.XWon.resize(130, 30)
         
         else:
-            self.XWon = QLabel("Gracz 1 wygrał!", self)
+            self.XWon = QLabel("Player 1 won!", self)
             self.XWon.move(50, 10)
             self.XWon.resize(100, 30)
         
@@ -145,16 +145,16 @@ class WinnerO(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle("Zwycięzca")
+        self.setWindowTitle("Winner")
         self.resize(200, 50)     
         
         if Name1.text() != Name2.text():
-            self.OWon = QLabel("Gracz " + Name2.text() + " wygrał!", self)
+            self.OWon = QLabel("Player " + Name2.text() + " won!", self)
             self.OWon.move(50, 10)
             self.OWon.resize(130, 30)
             
         else:
-            self.OWon = QLabel("Gracz 2 wygrał!", self)
+            self.OWon = QLabel("Player 2 won!", self)
             self.OWon.move(50, 10)
             self.OWon.resize(100, 30)
         
@@ -163,7 +163,7 @@ class Game(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle("Gra")
+        self.setWindowTitle("Game")
         self.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
@@ -298,10 +298,10 @@ class Game(QMainWindow):
             self.statusbar.setObjectName("statusbar")
             self.setStatusBar(self.statusbar)
             
-            self.Turn1 = QLabel("Ruch gracza " + Name1.text(), self)
+            self.Turn1 = QLabel("Player " + Name1.text() + "on move ", self)
             self.Turn1.move(350, 10)
             self.Turn1.resize(150, 50)
-            self.Turn2 = QLabel("Ruch gracza " + Name2.text(), self)
+            self.Turn2 = QLabel("Player " + Name2.text() + "on move ", self)
             self.Turn2.move(350, 10)
             self.Turn2.resize(150, 50)
             
@@ -314,13 +314,13 @@ class Game(QMainWindow):
                 self.Turn2.setVisible(True)
                 
         else:            
-            self.Xscore = QLabel("Wynik gracza 1", self)            
+            self.Xscore = QLabel("Player 1's score", self)            
             self.Xscore.move(60, 475)
             self.Xscore.resize(150,20)
             self.WynikX = QtWidgets.QLabel(self.centralwidget)
             self.WynikX.setGeometry(QtCore.QRect(90, 485, 101, 41))
             self.WynikX.setObjectName("WynikX")
-            self.Yscore = QLabel("Wynik gracza 2", self)
+            self.Yscore = QLabel("Player 2's score", self)
             self.Yscore.move(530, 475)
             self.Yscore.resize(150,20)
             self.WynikO = QtWidgets.QLabel(self.centralwidget)
@@ -335,10 +335,10 @@ class Game(QMainWindow):
             self.statusbar.setObjectName("statusbar")
             self.setStatusBar(self.statusbar)
             
-            self.Turn1 = QLabel("Ruch gracza 1", self)
+            self.Turn1 = QLabel("Player 1's move", self)
             self.Turn1.move(350, 10)
             self.Turn1.resize(100, 50)
-            self.Turn2 = QLabel("Ruch gracza 2", self)
+            self.Turn2 = QLabel("Player 2's move", self)
             self.Turn2.move(350, 10)
             self.Turn2.resize(100, 50)
             
